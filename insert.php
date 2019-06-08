@@ -11,11 +11,11 @@ include "funcs.php";
 $pdo = db_con();
 
 //３．データ登録SQL作成
-$sql = "INSERT INTO gs_bm_table(bookname,bookurl,bookcoment,indate)VALUES(:bookname,:bookurl,:bookcoment,sysdate())";
+$sql = "INSERT INTO gs_bm_table(bookname,bookurl,bookcoment,datetime)VALUES(:bookname,:bookurl,:bookcoment,sysdate())";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':bookname', $name, PDO::PARAM_STR); //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':bookurl', $email, PDO::PARAM_STR); //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':bookcoment', $naiyou, PDO::PARAM_STR); //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':bookname', $bookname, PDO::PARAM_STR); //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':bookurl', $bookurl, PDO::PARAM_STR); //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':bookcoment', $bookcoment, PDO::PARAM_STR); //Integer（数値の場合 PDO::PARAM_INT)
 
 $status = $stmt->execute();
 
